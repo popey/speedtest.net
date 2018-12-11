@@ -1,0 +1,23 @@
+name: speedtest-net
+base: core18 # the base snap is the execution environment for this snap
+version: git
+summary: node.js SpeedTest.net client module
+description: |
+  Speedtest command line client.
+
+grade: stable
+confinement: strict
+
+parts:
+  speedtest-net:
+    plugin: nodejs
+    nodejs-version: "8.14.0"
+    source: .
+    build-packages:
+      - build-essential
+
+apps:
+  speedtest-net:
+    command: bin/speedtest-net
+    plugs:
+      - network
